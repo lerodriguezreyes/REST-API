@@ -28,4 +28,23 @@ app.use("/users", usersRouter);
 app.use('/auth', authRouter);
 app.use('/api', apiRouter)
 
+
+// docs route:
+app.get('/docs', (request, response, next) => {
+  console.log(request);
+  response.sendFile(__dirname + '/views/docs.html');
+});
+// chorts json
+app.get('/api/cohorts', (request, response, next) => {
+  const filePath = path.join(__dirname, '../cohorts.json');
+  response.sendFile(filePath);
+});
+
+// students json
+app.get('/api/students', (request, response, next) => {
+  console.log(request);
+  const filePath = path.join(__dirname, '../students.json')
+  response.sendFile(filePath);
+});
+
 module.exports = app;
